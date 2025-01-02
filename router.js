@@ -13,4 +13,7 @@ const router = new express.Router()
  // login
  router.post('/login',userController.login)
 
+// add project
+router.post('./add-project')
+
 module.exports = router
