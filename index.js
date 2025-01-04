@@ -4,8 +4,9 @@ require('dotenv').config()
 //import connection
 require('./connection')
 
-// import appMiddleware
-const appMiddleware=require('./middleware/appMiddleware')
+// // import appMiddleware
+// const appMiddleware=require('./middleware/appMiddleware')
+
 // import express
 const express = require('express')
 
