@@ -1,9 +1,22 @@
+//import jwt
+const jwt = require('jsonwebtoken')
+
 const jwtMiddleware = (req, res, next) => {
     //logic
     console.log(`inside jwt middleware`);
-    const token = req.headers[`authorization`]
+    const token = req.headers[`authorization`].split(" ")[1]
     console.log(token);
-    next()
+
+    try {
+        const jwtResponse = jwt.verify(token, 'secretkey')
+        console.log(jwtResponse);
+        next()
+
+
+    } catch (error) {
+        res.status(401).json(`Authorization failed due to`, error)
+    }
+
 
 }
 

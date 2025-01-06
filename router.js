@@ -10,6 +10,9 @@ const projectController  = require('./controller/projectController')
 //import jwtMiddleware
 const jwtMiddleware=require('./middleware/jwtMiddleware')
 
+//import multer
+const multerConfig = require('./middleware/multerMiddleware')
+
 //instance router
 const router = new express.Router()
 
@@ -20,6 +23,6 @@ const router = new express.Router()
  router.post('/login',userController.login)
 
 // add project
-router.post('/add-project',jwtMiddleware,projectController.addProjectController)
+router.post('/add-project',jwtMiddleware,multerConfig.single("projectImage"),projectController.addProjectController)
 
 module.exports = router
