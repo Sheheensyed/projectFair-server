@@ -1,7 +1,7 @@
 // import mongoose
-const mongoose = require('mogoose')
+const mongoose = require('mongoose')
 
-const projectSchema=new mongoose.Scheme({
+const projectSchema=new mongoose.Schema({
     title:{
         required:true,
         type:String
