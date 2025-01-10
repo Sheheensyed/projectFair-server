@@ -30,32 +30,33 @@ exports.addProjectController = async (req, res) => {
 }
 
 // get all projects
-exports.getAllProjectController=async(req,res)=>{
-try {
-    const allProject = await projects.find()
-    res.status(200).json(allProject) 
-} catch (error) {
-    res.status(401).json(error)
-}
+exports.getAllProjectController = async (req, res) => {
+    try {
+        const allProject = await projects.find()
+        res.status(200).json(allProject)
+    } catch (error) {
+        res.status(401).json(error)
+    }
 }
 
 // get home projects
-exports.getHomeProjectController=async(req,res)=>{
+exports.getHomeProjectController = async (req, res) => {
     try {
         const allProject = await projects.find().limit(3)
-        res.status(200).json(allProject) 
+        res.status(200).json(allProject)
     } catch (error) {
         res.status(401).json(error)
     }
-    }
+}
 
 // get user projects
-exports.getUserProjectController=async(req,res)=>{
+exports.getUserProjectController = async (req, res) => {
     const userId = req.payload
     try {
-        const allProject = await projects.find({userId})
-        res.status(200).json(allProject) 
+        const allProject = await projects.find({ userId })
+        res.status(200).json(allProject)
     } catch (error) {
         res.status(401).json(error)
     }
-    }
+}
+

@@ -25,6 +25,9 @@ pfServer.use(cors())
 // parse the data -> middleware to parse the data 
 pfServer.use(express.json())
 
+// exporting upload folder
+pfServer.use('/upload',express.static('./uploads'))
+
 // use
 pfServer.use(router)
 
@@ -45,6 +48,7 @@ pfServer.listen(PORT, () => {
  pfServer.get('/',(req,res)=>{
     res.send(`get request recieved`)
  })
+
 
 //  // send
 //  pfServer.post('/',(req,res)=>{
