@@ -31,8 +31,18 @@ exports.addProjectController = async (req, res) => {
 
 // get all projects
 exports.getAllProjectController = async (req, res) => {
+    //path parameter = req.params
+    // query parameter = req.query
+    const searchKey= req.query.search
+    console.log(searchKey);
+    const query ={
+        language:{
+            $regex: searchKey, $options:'i'
+        }
+    }
+    
     try {
-        const allProject = await projects.find()
+        const allProject = await projects.find(query)
         res.status(200).json(allProject)
     } catch (error) {
         res.status(401).json(error)
