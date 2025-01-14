@@ -33,14 +33,14 @@ exports.addProjectController = async (req, res) => {
 exports.getAllProjectController = async (req, res) => {
     //path parameter = req.params
     // query parameter = req.query
-    const searchKey= req.query.search
+    const searchKey = req.query.search
     console.log(searchKey);
-    const query ={
-        language:{
-            $regex: searchKey, $options:'i'
+    const query = {
+        language: {
+            $regex: searchKey, $options: 'i'
         }
     }
-    
+
     try {
         const allProject = await projects.find(query)
         res.status(200).json(allProject)
@@ -70,3 +70,14 @@ exports.getUserProjectController = async (req, res) => {
     }
 }
 
+
+// remove user project
+exports.removeUserProjectController = async (req, res) => {
+    const { id } = req.params
+    try {
+        await projects.findByIdAndDelete({ _id: id })
+        res.status(200).json(`Project deleted successfully`)
+    } catch (error) {
+        res.status(401).json(error)
+    }
+}
